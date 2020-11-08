@@ -1,0 +1,25 @@
+.presentation{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+.row{
+    margin-top: 5%;
+}
+body{
+    background-color: whitesmoke;
+}
+.panier{
+    display: flex;
+    flex-direction: column;
+}
+.list-group{
+    display: flex;
+    margin-top: 5%;
+
+}
+
+.inputNumber{
+    width: 50px;
+
+}
