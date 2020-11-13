@@ -209,16 +209,18 @@ class Product {
         return this.products;
     }
     
-    get addProduct(){
-        return "hello";
+    addProduct(newProduct){
+        const id = this.products.length;
+        this.products.push({id: id, ...newProduct});
     }
 
-    saveProduct(){}
-    updateProduct(){}
-    deleteProduct(){}
-
-
-
+    
+    // deleteProduct(productToDelete){
+    //     console.log('on y est presque');
+    // } 
+    
+            updateProduct(){}
+    
 }
 
 module.exports = new Product();

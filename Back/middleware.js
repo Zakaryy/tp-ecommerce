@@ -1,9 +1,7 @@
 const product = require("./products");
-const { isExistGetPath } = require("./router");
+const { isExistGetPath, isExistPostPath, isExistDeletePath } = require("./router");
 
-function Middleware(){
-
-}
+function Middleware(){}
 
 function handleGetRequest(req, res){
     res.setHeader("Content-Type", "application/json; charset= UTF-8");
@@ -17,17 +15,32 @@ function handleGetRequest(req, res){
 }
 
 function handlePostRequest(req, res){
-    res.setHeader("Content-Type", "application/json; charset= UTF-8");
-    res.statusCode = 200;
+    res.statusCode = 201;
     if(isExistPostPath(res, req.url)){
         if(req.url === "/products"){
-            res.end(JSON.stringify(product.getProduct)); //surement modifier ici
+            req.on("data", function(data){
+                temp = JSON.parse(data.toString());
+                product.addProduct(temp);
+                
+            })
+            req.on("end", function(){             
+                console.log("post effectué");
+                res.end(JSON.stringify({message: "post effectué"}));
+            })
         }
     }
 
 }
 
 function handleDeleteRequest(req, res){
+    res.statusCode = 202;
+    if(isExistDeletePath(res,req.url)){
+        if(req.url === "/products"){
+            product.deleteProduct();
+        
+        }
+
+    }
 
 }
 

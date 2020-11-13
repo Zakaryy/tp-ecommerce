@@ -27,26 +27,33 @@
             </tbody>
           </table>
         </div>
-        <div class =" container boutons">
+        <div class ="container boutons">
           <button type="button" class="btn btn-primary get-request">Importer les Produits</button>
         </div>
-
          <form>
-            <div class="form-row">
+            <div class="container form-row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Nom produit">
+                <input type="text" id="Nom-produit" class="form-control" placeholder="Nom produit">
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Categorie">
+                <input type="text"  id="Categorie" class="form-control" placeholder="Categorie">
               </div>
               <div class="col">
-                <input type="number" class="form-control" placeholder="Prix">
+                <input type="number" id="Prix" class="form-control" placeholder="Prix">
               </div>
             </div>
           </form>
-          <div class =" container boutons">
-            <button type="button" class="btn btn-primary post-request">Ajouter un produit</button>
+          <div class ="container boutons">
+            <button type="submit" class="btn btn-primary post-request">Ajouter un produit</button>
           </div>
-    </div>
+          <div class = "container">
+            <select id="select-delete">
+              <option value="">Choisir un produit a supprimer</option>
+            </select>
+          </div>
+          <div class ="container boutons">
+            <button type="button" class="btn btn-primary delete-request">Supprimer un produit</button>
+          </div>
+        </div>
 </body>
 </html>

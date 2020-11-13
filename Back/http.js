@@ -1,9 +1,8 @@
 //#region requires
 
 const http = require("http");
-const { handleGetRequest } = require("./middleware");
-const { handlePostRequest } = require("./middleware");
-const {requestSupported} = require("./router");
+const { handleGetRequest, handlePostRequest, handleDeleteRequest } = require("./middleware");
+const { requestSupported } = require("./router");
 
 //#endregion requires
 
@@ -22,8 +21,15 @@ const {requestSupported} = require("./router");
 
 const server = http.createServer(function(request,response){
     response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+
+    let method = request.headers["access-control-request-method"];
 
     if(requestSupported(response, request.method)){
+        request.method = request.method && request.method === "OPTIONS" ?
+        method : request.method;
+        console.log(request.method);
+        
         if(request.method === "GET"){
             handleGetRequest(request, response);
         }
@@ -32,7 +38,7 @@ const server = http.createServer(function(request,response){
             
         }
         else if(request.method === "DELETE"){
-            
+            handleDeleteRequest(request,response);            
         }
         else if(request.method === "UPDATE"){
             
